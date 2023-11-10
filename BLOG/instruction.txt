@@ -1,0 +1,70 @@
+// Choisir un modèle de page (front) et faire la découpe des parties communes (header | nav | footer)
+// Dans le menu 3 liens : Accueil connexion inscription
+// preparer les 3 pages.
+
+// Sur la page inscription faire un form avec les champs et contrôles suivants
+// Pseudo
+// entre 4 et 14 caractères
+// une regex pour gérer les caractères
+// il faudra aussi un controle pour vérifier si le pseudo n'est pas déjà enregistré (le pseudo doit être unique sur le fichier texte qui conservera les inscriptions)
+
+// mdp
+// ne doit pas être vide
+// il faudra le passer dans password_hash(..., PASSWORD_DEFAULT)
+
+// email
+// le format du mail
+
+// Nom, prénom, adresse, ville
+// ne doit pas être vide
+
+// code postal 
+// doit être numérique et 5 caractères ( is_numeric() )
+
+// Si tous les contrôles sont ok, on enregistre dans un fichier texte les informations.
+
+
+// Page connexion
+// faire un formulaire avec les champs suivants :
+// Pseudo    
+// mdp
+
+// à la validation du form, on récupère le fichier contenant les inscription et via une boucle on isole la ligne ayant le pseudo provenant du form.
+// Ensuite on compare le mdp enregistré avec celui du form : password_verify(nouveau, ancien)
+// S'il y a une erreur : message d'erreur pour l'utilisateur 
+// Sinon on place toutes les infos de l'utilisateur (sauf le mdp) dans la session dans un sous tableau ([user] par exemple)
+// et on redirige l'utilisateur vers la page profil
+
+// Page profil
+// on affiche les informations de l'utilisateur
+
+// Une fois la connexion gérée :
+// faire une fonction permettant de savoir si l'utilisateur est connecté (ses informations sont présentes dans la session : true, sinon false)
+
+// Adapter le menu si l'utilisateur est connecté.
+// menu non connecté : Accueil | connexion | inscription
+// menu connecté : Accueil | profil | gestion_article | Déconnexion
+
+// Le lien déconnexion doit envoyer sur la page connexion.php et déclencher via un argument GET un session_destroy() ou un unset()
+
+
+// PAGE gestion_article.php (un utilisateur non connecté ne doit pas accéder à cette page)
+// Un formulaire permettant de créer des nouveaux articles 
+    // Titre 
+    // Catégorie
+    // Image (cdn ou traitement avec enregistrement sur le serveur)
+    // contenu
+    // Contrôles en enregistrement : sur un fichier texte ou un fichier par article (possibilité de gérer le fichier en json : json_encode() pour transformer un array en format json ou l'inverse json_decode(json, true))
+
+    // Rajouter lors de l'enregistrement, le pseudo de l'utilisateur (disponible dans la session) ainsi que la date
+    // Il est possible de numéroter les articles (via un id)
+
+    // Proposer la modification et suppression
+        // lister sur cette page les différents article et rajouter sur chaque ligne un bouton pour modifier et un autre pour supprimer
+            // Pour la modification, il faudra pré remplir les champs du form par le contenu du fichier
+
+// Faire la page index.php pour afficher les différents articles créés :
+    // affichage du plus récent vers le plus ancien
+    // afficher les différentes catégories enregistrées dans les articles afin de les proposer en liens pour filtrer les articles ne correspondant que à cette catégorie.
+
+// Faire une page pour afficher un article complet (details_article.php ou fiche_article.php).
